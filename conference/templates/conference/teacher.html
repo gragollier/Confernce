@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Teachers </title>
+</head>
+<body>
+<ul>
+    {% for teacher in teacher_list %}
+    <li><a href="{% url 'conference:time' teacher.id %}"> {{teacher}} </a></li>
+    {% empty %}
+    <h3> It appears this service has not been initiated yet, please contact the administrator</h3>
+    {% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{time_list.teacher_name}}'s Times</title>
+</head>
+<body>
+<ul>
+    {% for time in time_list.time_set.all %}
+    {% if time.time_available == True %}
+    <li><a href="{% url 'conference:vote' time.id %}"> {{time.time}}</a></li>
+    {% elif time.time_available == False %}
+    <li> Reserved by {{time.reserved_by}} ---- {{time.time}} </li>
+    {% endif %}
+    {% empty %}
+    <li>Sorry it appears this hasn't been initiated please contact your administrator</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
